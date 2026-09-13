@@ -1,0 +1,12 @@
+{
+  "name": "aetos-inventory-decision-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-assisted ERP/WMS onboarding and explainable stockout decision prototype.",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

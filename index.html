@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A focused prototype for AI-assisted ERP/WMS onboarding and explainable inventory stockout decisions.">
+  <title>Inventory Decision Workspace · Aetos Digilog</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="Aetos inventory workspace home">
+        <img src="assets/aetos-digilog.jpg" alt="Aetos Digilog">
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span>Inventory Decision Workspace</span>
+      </a>
+      <div class="header-meta">
+        <span>Built by <strong>Satvik Pandey</strong></span>
+        <span class="meta-dot" aria-hidden="true"></span>
+        <span>Prepared for <strong>Aetos Digilog</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">AI-native inventory planning</span>
+        <h1>From fragmented operations data to decisions people can trust.</h1>
+        <p>Explore how ERP and WMS data is mapped into a canonical model, then use the same governed data to identify stockout risk.</p>
+        <div class="trust-row" aria-label="Prototype characteristics">
+          <span><i class="status-dot"></i> Representative demo data</span>
+          <span>Deterministic planning calculations</span>
+          <span>Explainable recommendations</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="signal-card signal-card--erp"><span>ERP</span><small>Orders &amp; products</small></div>
+        <div class="signal-line signal-line--one"></div>
+        <div class="signal-core">
+          <svg viewBox="0 0 24 24"><path d="M12 3 4.5 7.2v9.6L12 21l7.5-4.2V7.2L12 3Zm0 2.3 5.1 2.9-2 1.1L10 6.4l2-1.1ZM8 7.5l5.1 2.9-1.1.6-5.1-2.9L8 7.5Zm-1.8 2 4.8 2.7v6L6.2 15.5v-6Zm6.8 8.7v-6l4.8-2.7v6L13 18.2Z"/></svg>
+          <span>Operational graph</span>
+        </div>
+        <div class="signal-line signal-line--two"></div>
+        <div class="signal-card signal-card--wms"><span>WMS</span><small>Inventory &amp; locations</small></div>
+      </div>
+    </section>
+
+    <section class="workspace" aria-labelledby="workspace-heading">
+      <div class="workspace-heading">
+        <div>
+          <span class="eyebrow">Interactive prototype</span>
+          <h2 id="workspace-heading">Two workflows, one governed data foundation</h2>
+        </div>
+        <div class="segmented-control" role="tablist" aria-label="Choose workflow">
+          <button class="segment active" id="mapping-tab" role="tab" aria-selected="true" aria-controls="mapping-panel" data-panel="mapping-panel">
+            <span class="segment-number">01</span> Map source data
+          </button>
+          <button class="segment" id="stockout-tab" role="tab" aria-selected="false" aria-controls="stockout-panel" data-panel="stockout-panel">
+            <span class="segment-number">02</span> Assess stockout risk
+          </button>
+        </div>
+      </div>
+
+      <section class="workflow-panel active" id="mapping-panel" role="tabpanel" aria-labelledby="mapping-tab">
+        <div class="panel-intro">
+          <div>
+            <span class="step-label">Onboarding assistant</span>
+            <h3>Review suggested source-to-canonical mappings</h3>
+            <p>The assistant combines schema meaning, sample values and canonical definitions. Every suggestion remains reviewable before activation.</p>
+          </div>
+          <button class="primary-button" id="analyze-mappings">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 1.45 4.55L18 8l-4.55 1.45L12 14l-1.45-4.55L6 8l4.55-1.45L12 2Zm6 11 .9 2.1L21 16l-2.1.9L18 19l-.9-2.1L15 16l2.1-.9L18 13ZM5 14l1.2 2.8L9 18l-2.8 1.2L5 22l-1.2-2.8L1 18l2.8-1.2L5 14Z"/></svg>
+            Analyze mappings
+          </button>
+        </div>
+
+        <div class="mapping-layout">
+          <aside class="source-card" aria-label="Connected source systems">
+            <div class="source-heading">
+              <span>Connected sources</span>
+              <span class="live-pill"><i></i> Samples loaded</span>
+            </div>
+            <button class="source-system selected" data-source="ERP">
+              <span class="system-icon">E</span>
+              <span><strong>ERP API</strong><small>Purchase order payload</small></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <button class="source-system" data-source="WMS">
+              <span class="system-icon system-icon--blue">W</span>
+              <span><strong>WMS API</strong><small>Inventory snapshot</small></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <div class="source-sample">
+              <div class="sample-title"><span id="sample-name">ERP sample</span><span>JSON</span></div>
+              <pre id="source-json" tabindex="0"></pre>
+            </div>
+          </aside>
+
+          <div class="mapping-card">
+            <div class="card-toolbar">
+              <div>
+                <strong id="mapping-title">ERP mapping suggestions</strong>
+                <span id="mapping-summary">6 fields ready for review</span>
+              </div>
+              <div class="legend"><span><i class="confidence high"></i> High</span><span><i class="confidence medium"></i> Review</span></div>
+            </div>
+            <div class="mapping-table-wrap">
+              <table class="mapping-table">
+                <thead>
+                  <tr><th>Source field</th><th>Canonical field</th><th>Transform</th><th>Confidence</th><th><span class="sr-only">Approval</span></th></tr>
+                </thead>
+                <tbody id="mapping-rows"></tbody>
+              </table>
+            </div>
+            <div class="review-bar">
+              <span id="approval-count">0 of 6 suggestions approved</span>
+              <button class="text-button" id="approve-high">Approve high-confidence</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight-strip" id="mapping-insight" aria-live="polite">
+          <span class="insight-icon">i</span>
+          <p><strong>Review before activation.</strong> The production workflow validates these mappings on a dry-run sample, reconciles totals, and versions the approved specification.</p>
+        </div>
+      </section>
+
+      <section class="workflow-panel" id="stockout-panel" role="tabpanel" aria-labelledby="stockout-tab" hidden>
+        <div class="query-card">
+          <div class="query-heading">
+            <span class="step-label">Inventory copilot</span>
+            <h3>Ask an operational question</h3>
+          </div>
+          <form id="stockout-form">
+            <label for="inventory-question">Question</label>
+            <div class="query-input-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 1 0 4.9 12l4 4 1.1-1.1-4-4A7 7 0 0 0 11 4Zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z"/></svg>
+              <input id="inventory-question" value="Which SKUs will stock out in the next 14 days?" autocomplete="off">
+              <button class="primary-button" type="submit">Run analysis</button>
+            </div>
+          </form>
+          <div class="query-options">
+            <label>Location
+              <select id="location-filter"><option value="all">All locations</option><option value="Delhi DC">Delhi DC</option><option value="Jaipur DC">Jaipur DC</option><option value="Pune Hub">Pune Hub</option></select>
+            </label>
+            <label>Horizon
+              <select id="horizon-filter"><option value="7">7 days</option><option value="14" selected>14 days</option><option value="21">21 days</option></select>
+            </label>
+            <span class="freshness"><i></i> Data refreshed <strong>8 min ago</strong></span>
+          </div>
+        </div>
+
+        <div id="results-region" aria-live="polite">
+          <div class="empty-state">
+            <div class="empty-icon"><svg viewBox="0 0 24 24"><path d="M4 19h16M6 16l4-5 3 2 5-7"/></svg></div>
+            <h3>Ready to assess inventory risk</h3>
+            <p>Run the sample question to project inventory using demand, reservations and confirmed inbound orders.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <span>Decision-support prototype</span>
+    <span>Representative data only · No purchase orders are executed</span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/engine.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
