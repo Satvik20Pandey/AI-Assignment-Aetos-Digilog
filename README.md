@@ -11,7 +11,7 @@ A focused prototype for the Aetos Digilog AI Engineer assessment. It demonstrate
 
 [Open the Inventory Decision Workspace](https://satvik20pandey.github.io/AI-Assignment-Aetos-Digilog/)
 
-[Download the editable assignment document](deliverables/Satvik_Pandey_Aetos_AI_Assignment.docx)
+[Download the final assessment document](deliverables/Satvik_Pandey_Aetos_AI_Assignment.pdf)
 
 The site is a static GitHub Pages application, so it has no server dependency and loads immediately. All data is representative. Inventory projections are deterministic and run locally in the browser.
 
@@ -49,4 +49,4 @@ The first day where projected available inventory reaches zero is reported as th
 
 ## Scope
 
-This is a decision-support prototype, not a production ERP/WMS integration. It intentionally excludes live connectors, user authentication, model training, and purchase-order execution. The architecture and production controls are described in `deliverables/Satvik_Pandey_Aetos_AI_Assignment.docx`.
+This is a decision-support prototype, not a production ERP/WMS integration. It intentionally excludes live connectors, user authentication, model training, and purchase-order execution. The architecture and production controls are described in `deliverables/Satvik_Pandey_Aetos_AI_Assignment.pdf`.
